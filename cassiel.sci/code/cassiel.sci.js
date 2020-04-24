@@ -5,7 +5,7 @@ const max = require('max-api');
 const { evalString, toJS } = require('@borkdude/sci');
 const moment = require('moment');
 
-var bindings = {max: max};
+var bindings = {maxAPI: max};
 
 function evaluate(tokens) {
     const code = tokens.join(" ");      // Clojure code fragment as single string.
@@ -28,8 +28,12 @@ function emit(cljValue) {
 const handlers = {
     // "define myVar (range 20)": evaluate some Clojure, bind it here to a variable.
     define: (varName, ...args) => {
-        const v = evaluate(args);
-        bindings[varName] = v;
+        try {
+            const v = evaluate(args);
+            bindings[varName] = v;
+        } catch (err) {
+            max.post(err.message);
+        }
     },
 
     [max.MESSAGE_TYPES.BANG]: () => {
@@ -38,14 +42,16 @@ const handlers = {
 
     [max.MESSAGE_TYPES.ALL]: (handled, ...args) => {
         if (!handled) {
-            const v = evaluate(args);
-            emit(v);
+            try {
+                const v = evaluate(args);
+                emit(v);
+            } catch (err) {
+                max.post(err.message);
+            }
         }
     }
 };
 
-
 max.addHandlers(handlers);
-
 
 max.post(`loaded ${path.basename(__filename)} at ${moment()}`);
