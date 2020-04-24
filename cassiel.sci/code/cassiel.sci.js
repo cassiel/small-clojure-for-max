@@ -5,7 +5,8 @@ const max = require('max-api');
 const { evalString, toJS } = require('@borkdude/sci');
 const moment = require('moment');
 
-var bindings = {maxAPI: max};
+var bindings = {maxAPI: max,
+                post: max.post};
 
 function evaluate(tokens) {
     const code = tokens.join(" ");      // Clojure code fragment as single string.
