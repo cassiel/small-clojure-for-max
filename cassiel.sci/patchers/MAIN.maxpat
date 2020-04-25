@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 165.0, 341.0, 830.0, 475.0 ],
+		"rect" : [ 91.0, 351.0, 830.0, 475.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -68,8 +68,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 284.0, 25.0, 196.0, 20.0 ],
-					"text" : "\"(.post maxAPI \\\"HELLO\\\")\""
+					"patching_rect" : [ 284.0, 25.0, 138.0, 20.0 ],
+					"text" : "(.post maxAPI 999)"
 				}
 
 			}
@@ -259,8 +259,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -442,7 +440,6 @@
 				"name" : "cassiel",
 				"default" : 				{
 					"bgcolor" : [ 0.163647, 0.174699, 0.17409, 1.0 ],
-					"fontname" : [ "InputMono" ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
@@ -451,7 +448,8 @@
 						"angle" : 270.0,
 						"proportion" : 0.39
 					}
-
+,
+					"fontname" : [ "InputMono" ]
 				}
 ,
 				"parentstyle" : "",

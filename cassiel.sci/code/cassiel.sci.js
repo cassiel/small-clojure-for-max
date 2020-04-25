@@ -10,7 +10,8 @@ var bindings = {maxAPI: max,
 
 function evaluate(tokens) {
     const code = tokens.join(" ");      // Clojure code fragment as single string.
-    const v = evalString(code, {bindings: bindings});
+    const v = evalString(code, {classes: {allow: "all"},
+                                bindings: bindings});
 
     return v;
 }
